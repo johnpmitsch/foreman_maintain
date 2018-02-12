@@ -97,6 +97,20 @@ module ForemanMaintain
         end
       end
 
+      def self.exclude_option
+        option('--exclude', 'exclude',
+               'A comma-separated list of services to skip') do |exclude|
+          raise ArgumentError, 'value not specified' if exclude.nil? || exclude.empty?
+        end
+      end
+
+      def self.only_option
+        option('--only', 'only',
+               'A comma-separated list of services to include') do |exclude|
+          raise ArgumentError, 'value not specified' if exclude.nil? || exclude.empty?
+        end
+      end
+
       def self.interactive_option
         delete_duplicate_assumeyes_if_any
 
