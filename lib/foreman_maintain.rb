@@ -53,6 +53,12 @@ module ForemanMaintain
       self.config = Config.new(options)
       load_definitions
       init_logger
+      update_path(["/sbin"])
+    end
+
+    def update_path(paths)
+      paths = paths.join(":")
+      ENV['PATH'] = "#{ENV['PATH']}:#{paths}"
     end
 
     def config_file
